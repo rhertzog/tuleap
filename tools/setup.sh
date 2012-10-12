@@ -1187,13 +1187,13 @@ if [ $SELINUX_ENABLED ]; then
     $CHCON -h $SELINUX_CONTEXT /cvsroot
 fi
 
-
 ##############################################
 # Install the Tuleap software 
 #
 
 setup_tuleap
 
+$INSTALL_DIR/src/utils/generate_ssl_certificate.sh
 setup_apache
 setup_nss
 
@@ -1231,13 +1231,6 @@ $CHMOD 770 /var/lib/dav/
 # Installing the Tuleap database
 #
 setup_mysql
-
-##############################################
-# SSL Certificate creation
-
-if [ "$create_ssl_certificate" = "y" ]; then
-    $INSTALL_DIR/src/utils/generate_ssl_certificate.sh
-fi
 
 
 ##############################################
